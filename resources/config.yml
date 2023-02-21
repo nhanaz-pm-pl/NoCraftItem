@@ -1,0 +1,12 @@
+---
+# Messages sent to players if they craft items that are not allowed to craft.
+# Set the value of cancelMessage to "" to disable this feature.
+cancelMessage: "&cYou cannot craft this item!"
+
+# true : Prevent players from crafting all items
+noCraftAllItem: false
+
+# List items that do not allow players to craft here:
+# Example: noCraftItem: ["hopper", "anvil"]
+noCraftItem: []
+...

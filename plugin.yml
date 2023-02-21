@@ -1,0 +1,15 @@
+---
+name: NoCraftItem
+version: 0.0.1
+main: NhanAZ\NoCraftItem\Main
+api: 4.0.0
+
+website: https://github.com/NhanAZ
+description: Prevent players from crafting specified items
+author: NhanAZ
+
+permissions:
+  nocraftitem.bypass:
+    description: "Bypass NoCraftItem"
+    default: op
+...
