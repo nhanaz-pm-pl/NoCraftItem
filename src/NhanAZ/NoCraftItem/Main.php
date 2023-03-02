@@ -4,12 +4,9 @@ declare(strict_types=1);
 
 namespace NhanAZ\NoCraftItem;
 
+use NhanAZ\libBedrock\StringToItem;
 use pocketmine\event\inventory\CraftItemEvent;
 use pocketmine\event\Listener;
-use pocketmine\item\Item;
-use pocketmine\item\LegacyStringToItemParser;
-use pocketmine\item\LegacyStringToItemParserException;
-use pocketmine\item\StringToItemParser;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
@@ -20,17 +17,8 @@ class Main extends PluginBase implements Listener {
 		$this->saveDefaultConfig();
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		foreach ($this->getConfig()->get("noCraftItem") as $noCraftItem) {
-			self::stringToItem($noCraftItem);
+			StringToItem::parse($noCraftItem);
 		}
-	}
-
-	private function stringToItem(string $string): Item {
-		try {
-			$item = StringToItemParser::getInstance()->parse($string) ?? LegacyStringToItemParser::getInstance()->parse($string);
-		} catch (LegacyStringToItemParserException $e) {
-			throw new LegacyStringToItemParserException($e->getMessage());
-		}
-		return $item;
 	}
 
 	private function sendCancelMessage(Player $player): void {
@@ -54,7 +42,7 @@ class Main extends PluginBase implements Listener {
 		}
 		foreach ($outputs as $output) {
 			foreach ($config->get("noCraftItem") as $noCraftItem) {
-				if ($output->equals(self::stringToItem($noCraftItem))) {
+				if ($output->equals(StringToItem::parse($noCraftItem))) {
 					$event->cancel();
 					self::sendCancelMessage($player);
 					break;
