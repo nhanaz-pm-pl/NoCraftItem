@@ -9,7 +9,6 @@ use pocketmine\event\inventory\CraftItemEvent;
 use pocketmine\event\Listener;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
-use pocketmine\utils\TextFormat;
 
 class Main extends PluginBase implements Listener {
 
@@ -24,7 +23,7 @@ class Main extends PluginBase implements Listener {
 	private function sendCancelMessage(Player $player): void {
 		$cancelMessage = $this->getConfig()->get("cancelMessage");
 		if (!empty($cancelMessage)) {
-			$player->sendMessage(TextFormat::colorize($cancelMessage));
+			$player->sendMessage($cancelMessage);
 		}
 	}
 
