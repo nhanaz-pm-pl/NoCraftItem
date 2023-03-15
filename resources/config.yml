@@ -3,7 +3,7 @@
 # Set the value of cancelMessage to "" to disable this feature.
 cancelMessage: "§cYou cannot craft this item!"
 
-# true : Prevent players from crafting all items
+# true : Prevent players from crafting all items.
 noCraftAllItem: false
 
 # List items that do not allow players to craft here:
